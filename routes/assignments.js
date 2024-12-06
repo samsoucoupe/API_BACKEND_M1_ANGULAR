@@ -74,6 +74,15 @@ function deleteAssignment(req, res) {
     })
 }
 
+function purge(req, res) {
+    Assignment.deleteMany({}, (err) => {
+        if(err){
+            res.send(err);
+        }
+        res.json({message: 'All assignments deleted'});
+    })
+}
 
 
-module.exports = { getAssignments, postAssignment, getAssignment, updateAssignment, deleteAssignment };
+
+module.exports = { getAssignments, postAssignment, getAssignment, updateAssignment, deleteAssignment, purge };
