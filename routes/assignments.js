@@ -64,12 +64,14 @@ function updateAssignment(req, res) {
 
 // suppression d'un assignment (DELETE)
 function deleteAssignment(req, res) {
-
-    Assignment.findByIdAndRemove(req.params._id, (err, assignment) => {
+    let assignmentId = req.params.id;
+    Assignment.findByIdAndRemove(assignmentId, (err) => {
         if (err) {
             res.send(err);
+        } else {
+            res.json({ message: 'deleted' });
         }
-    })
+    });
 }
 
 function purge(req, res) {
