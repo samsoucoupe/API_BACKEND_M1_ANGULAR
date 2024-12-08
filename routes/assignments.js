@@ -30,7 +30,6 @@ function getAssignment(req, res){
 function postAssignment(req, res){
 
     let assignment = new Assignment();
-    assignment.id = req.body.id;
     assignment.name = req.body.name;
     assignment.dueDate = req.body.dueDate;
     assignment.isRendered = req.body.isRendered;
@@ -66,7 +65,7 @@ function updateAssignment(req, res) {
 // suppression d'un assignment (DELETE)
 function deleteAssignment(req, res) {
 
-    Assignment.findByIdAndRemove(req.params.id, (err, assignment) => {
+    Assignment.findByIdAndRemove(req.params._id, (err, assignment) => {
         if (err) {
             res.send(err);
         }
